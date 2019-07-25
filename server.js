@@ -8,9 +8,9 @@ server.use(cors());
 server.use(bodyparser.json());
 // creat connection
 var db = mysql.createConnection({
-  host     : '10.99.103.198',
-  user     : '354',
-  password : '354354354',
+  host     : localhost,
+  user     : 'user',
+  password : 'passwd',
   database : 'futurescompetition' 
 });
 

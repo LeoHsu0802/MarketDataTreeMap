@@ -1,31 +1,3 @@
-// var xhr = new XMLHttpRequest();
-// var MKdata = "";
-// var a = "123";
-// xhr.open('get','http://localhost:3001/futures',true);
-// xhr.send();
-// xhr.onload = function(){
-//     if(this.status == 200){
-//       //console.log(xhr.responseText);
-//      var MKdata = JSON.parse(xhr.responseText);
-//       console.log(MKdata)
-//       //for(let i = 0; i < MKdata.length; i++){
-//         //console.log(MKdata[i]);
-//           //}
-//        // a = JSON.stringify(MKdata[0].symbolroot); 
-//         //console.log(a); 
-//       var MKdataByName = d3.nest()
-//       .key(function(d) { return d.name; })
-//       .entries(MKdata);
-
-//       console.log(MKdataByName);
-
-//     }else{
-//       console.log("資料錯誤");
-//     }
-//   }
-
-  // --- 轉換巢狀結構的key ---
-
   
   function reSortRoot(roodata,value_key) {
     for (var key in roodata) {
@@ -191,7 +163,6 @@ function redraw() {
         return (parentData.x1 - parentData.x0) / 2;
       });
 
-    // Add a <tspan class="author"> for every data element.
     txt.append("tspan")
       .text(d => `$${format(d.data.price )}`)
       .attr("class", "price")
@@ -201,7 +172,6 @@ function redraw() {
         return (parentData.x1 - parentData.x0) / 2;
       });
 
-    // Add a <tspan class="author"> for every data element.
     txt.append("tspan")
       .text(d => (d.data.pc > 0) ? `+${d.data.pc}` : `${d.data.pc}`)
       .attr("class", "percent")
@@ -228,7 +198,6 @@ function redraw() {
       .attr("x", (d) => d.x0 + 3)
       .attr("y", (d) => d.y0 + 18)
       .text((d) => d.data.name)
-      // .attr("font-size", d => Math.max(d.x1 - d.x0, d.y1 - d.y0) / 22)
       .attr("font-size", "16px")
       .attr("font-weight", "400")
       .attr("fill", "#fff");
@@ -253,20 +222,15 @@ function redraw() {
     .paddingTop(25)
     .round(true);
 
-  // let charsts = d3.select("#chart");
-
   let format = d3.format(",d");
 
   chart();
 }
 
-// Draw for the first time to initialize.
 redraw();
 
-// Redraw based on the new size whenever the browser window is resized.
 window.addEventListener("resize", redraw);
 
-// ZOOM Function
 var instance = panzoom(document.getElementById("chart"), {
   zoomSpeed: 0.06,
   maxZoom: 20,
@@ -275,7 +239,6 @@ var instance = panzoom(document.getElementById("chart"), {
 
 instance.on("panstart", function (e) {
   console.log("Fired when pan is just started ", e);
-  // Note: e === instance.
 });
 
 instance.on("pan", function (e) {
